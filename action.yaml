@@ -1,0 +1,31 @@
+name: 'Create PlanetScale Database Branch '
+description: 'Creates a branch for a PlanetScale database.'
+inputs:
+  database_name:
+    description: 'The name of the database'
+    required: true
+  branch_name:
+    description: 'The name of the new branch'
+    required: true
+  org_name:
+    description: 'The name of the organization that owns the database'
+    required: true
+  from:
+    description: 'The production branch to create the new branch from. Defaults to the default production branch.'
+    required: false
+  restore:
+    description: 'The ID of the backup you wish to restore into the new branch.'
+    required: false
+  region:
+    description: 'The region where the new branch should be created. Defaults to the region of the `from` branch.'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.database_name }}
+    - ${{ inputs.branch_name }}
+    - ${{ inputs.org_name }}
+    - ${{ inputs.from }}
+    - ${{ inputs.restore }}
+    - ${{ inputs.region }}
