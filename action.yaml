@@ -22,6 +22,9 @@ inputs:
   region:
     description: 'The region where the new branch should be created. Defaults to the region of the `from` branch.'
     required: false
+  wait:
+    description: 'If set to "true", the action will wait until the branch is finished initializing before exiting.'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -32,3 +35,4 @@ runs:
     - ${{ inputs.from }}
     - ${{ inputs.restore }}
     - ${{ inputs.region }}
+    - ${{ inputs.wait }}

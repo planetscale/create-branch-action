@@ -4,10 +4,10 @@ This GitHub Action can be used within your workflows to create new branches of y
 
 ## Prerequisites
 
-Before you can use this Action, you'll need to configure a service token that has permissions to create branches on your database. Refer to our docs on [how to create a service token](https://planetscale.com/docs/concepts/service-tokens) for more details. Once the service token has been created, the following repository secrets must also be set:
+Before you can use this Action, you'll need to configure a service token that has permission to create branches on your database. Refer to our docs on [how to create a service token](https://planetscale.com/docs/concepts/service-tokens) for more details. Once the service token has been created, the following repository secrets must also be set:
 
-- `PLANETSCALE_TOKEN_NAME`
-- `PLANETSCALE_TOKEN`
+- `PLANETSCALE_SERVICE_TOKEN_ID`
+- `PLANETSCALE_SERVICE_TOKEN`
 
 These values will be used to authenticate to the PlanetScale service.
 
@@ -36,8 +36,8 @@ jobs:
           branch_name: mynewbranch
           from: main
         env:
-          PLANETSCALE_TOKEN_NAME: ${{ secrets.PLANETSCALE_TOKEN_NAME }}
-          PLANETSCALE_TOKEN: ${{ secrets.PLANETSCALE_TOKEN }}
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{ secrets.PLANETSCALE_SERVICE_TOKEN_ID }}
+          PLANETSCALE_SERVICE_TOKEN: ${{ secrets.PLANETSCALE_SERVICE_TOKEN }}
 ```
 
 ## Input variables
@@ -53,6 +53,7 @@ jobs:
 - `from` - The name of the branch that the new branch will be created from. Defaults to the branch defined in your database settings.
 - `restore` - The ID of the backup that will be restored to the new branch. If not set, no backup will be restored.
 - `region` - The region to create the new branch in. Defaults to the region where the `from` branch currently is.
+- `wait` - If this value is set to "true", the action will ensure that the branch is created before exiting. If not, the action will exit immediately once the PlanetScale service has received the command to create the branch.
 
 ## Outputs
 
