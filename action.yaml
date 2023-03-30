@@ -1,4 +1,4 @@
-name: 'Create PlanetScale Database Branch '
+name: 'Create Database Branch '
 description: 'Creates a branch for a PlanetScale database.'
 branding:
   color: 'orange'
