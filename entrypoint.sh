@@ -15,6 +15,9 @@ if [ -n "$6" ];then
 fi
 
 eval $command
+if [ $? -ne 0 ]; then
+  exit $?
+fi
 
 if [ "true" == "$7" ];then
   . /.pscale/cli-helper-scripts/wait-for-branch-readiness.sh
