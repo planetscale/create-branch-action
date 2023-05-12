@@ -17,9 +17,6 @@ fi
 eval $command
 
 ret=$?
-
-echo "exit code: $ret"
-
 if [ $ret -ne 0 ]; then
   exit $ret
 fi
