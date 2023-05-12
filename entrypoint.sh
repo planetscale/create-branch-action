@@ -15,7 +15,12 @@ if [ -n "$6" ];then
 fi
 
 eval $command
-if [ $? -ne 0 ]; then
+
+$ret=$?
+
+echo "exit code: $ret"
+
+if [ $ret -ne 0 ]; then
   exit $?
 fi
 
