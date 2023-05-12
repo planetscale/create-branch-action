@@ -16,12 +16,12 @@ fi
 
 eval $command
 
-$ret=$?
+ret=$?
 
 echo "exit code: $ret"
 
 if [ $ret -ne 0 ]; then
-  exit $?
+  exit $ret
 fi
 
 if [ "true" == "$7" ];then
