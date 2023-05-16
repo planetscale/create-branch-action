@@ -16,6 +16,11 @@ fi
 
 eval $command
 
+ret=$?
+if [ $ret -ne 0 ]; then
+  exit $ret
+fi
+
 if [ "true" == "$7" ];then
   . /.pscale/cli-helper-scripts/wait-for-branch-readiness.sh
   wait_for_branch_readiness 10 "$1" "$2" "$3" 20

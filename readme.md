@@ -28,7 +28,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: Create a branch
-        uses: planetscale/create-branch-action@v1
+        uses: planetscale/create-branch-action@v2
         id: create_branch
         with:
           org_name: bmorrison-ps
