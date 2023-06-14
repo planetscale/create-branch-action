@@ -19,6 +19,8 @@ fi
 if [ "true" == "$8" ];then
   output=$(eval "pscale branch show $1 $2 --org $3" 2>&1)
   exit_status=$?
+  echo $output
+  echo $exit_status
   if [ $exit_status -ne 0 ]; then
     create_branch=true
   else
