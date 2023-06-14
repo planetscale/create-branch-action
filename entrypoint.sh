@@ -15,6 +15,8 @@ if [ -n "$6" ];then
   command="$command --region $6"
 fi
 
+echo $8
+
 # Check if branch already exists
 if [ "true" == "$8" ];then
   output=$(eval "pscale branch show $1 $2 --org $3" 2>&1)
