@@ -26,7 +26,7 @@ if [ "true" == "$8" ];then
   fi
 fi
 
-if create_branch; then
+if $create_branch; then
   eval $command
 
   ret=$?
