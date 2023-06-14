@@ -26,7 +26,7 @@ inputs:
     description: 'If set to "true", the action will wait until the branch is finished initializing before exiting.'
     required: false
   check_exists:
-    description: "If set to \"true\", the action won't create the branch when it already exists."
+    description: "If set to \"true\", the action won't create the branch if it already exists."
     required: false
 runs:
   using: 'docker'
