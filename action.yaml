@@ -39,4 +39,4 @@ runs:
     - ${{ inputs.restore }}
     - ${{ inputs.region }}
     - ${{ inputs.wait }}
-    - ${{ inputs.allow_duplicate }}
+    - ${{ inputs.check_exists }}
