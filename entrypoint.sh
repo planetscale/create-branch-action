@@ -36,7 +36,7 @@ if $create_branch; then
 
   if [ "true" == "$7" ];then
     . /.pscale/cli-helper-scripts/wait-for-branch-readiness.sh
-    wait_for_branch_readiness 10 "$1" "$2" "$3" 20
+    wait_for_branch_readiness 40 "$1" "$2" "$3" 5
   fi
 else
   echo "Branch $2 already exists"
