@@ -55,7 +55,9 @@ jobs:
 - `region` - The region to create the new branch in. Defaults to the region where the `from` branch currently is.
 - `wait` - If this value is set to "true", the action will ensure that the branch is created before exiting. If not, the action will exit immediately once the PlanetScale service has received the command to create the branch.
 - `check_exists` - If set to "true", the action won't create the branch if it already exists.
-- `seed_data` - Set to "true", to enable seed data via Data Branching™.
+- `seed_data` - Set to "true", to enable seed data from the latest backup.\*
+
+\* This uses the Data Branching™ feature in PlanetScale, which is not available on all plans. Attempting to use this flat without a supported plan will cause the workflow to fail. More details can be found in the [PlanetScale plans](https://planetscale.com/docs/concepts/planetscale-plans) page of our docs.
 
 ## Outputs
 
