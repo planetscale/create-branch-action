@@ -28,6 +28,9 @@ inputs:
   check_exists:
     description: "If set to \"true\", the action won't create the branch if it already exists."
     required: false
+  seed_data:
+    description: "Set to \"true\", to enable seed data from the latest backup using Data Branching™"
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -40,3 +43,4 @@ runs:
     - ${{ inputs.region }}
     - ${{ inputs.wait }}
     - ${{ inputs.check_exists }}
+    - ${{ inputs.seed_data }}
