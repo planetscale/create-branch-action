@@ -15,7 +15,7 @@ if [ -n "$6" ];then
   command="$command --region $6"
 fi
 
-if [ -n "$7" ];then
+if [ "$7" == "true" ]; then
   command="$command --seed-data"
 fi
 
