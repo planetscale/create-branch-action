@@ -28,7 +28,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: Create a branch
-        uses: planetscale/create-branch-action@v2
+        uses: planetscale/create-branch-action@v4
         id: create_branch
         with:
           org_name: bmorrison-ps
@@ -57,7 +57,7 @@ jobs:
 - `check_exists` - If set to "true", the action won't create the branch if it already exists.
 - `seed_data` - Set to "true", to enable seed data from the latest backup using Data Branching™.\*
 
-\* The Data Branching™ feature in PlanetScale, which is not available on all plans. Attempting to use this flat without a supported plan will cause the workflow to fail. More details can be found in the [PlanetScale plans](https://planetscale.com/docs/concepts/planetscale-plans) page of our docs.
+\* The Data Branching™ feature is not available on all plans. More details can be found here: [PlanetScale plans](https://planetscale.com/docs/concepts/planetscale-plans).
 
 ## Outputs
 
