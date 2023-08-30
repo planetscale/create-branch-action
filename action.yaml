@@ -53,9 +53,9 @@ runs:
         REGION: ${{ inputs.region }}
         RESTORE: ${{ inputs.restore }}
       shell: bash
-      run:
+      run: |
         pwd
+        cd ..
         ls
-        ls dist
         cat dist/index.js
         node dist/index.js
