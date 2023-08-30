@@ -54,4 +54,6 @@ runs:
         RESTORE: ${{ inputs.restore }}
       shell: bash
       run:
+        ls dist
+        cat dist/index.js
         node dist/index.js
