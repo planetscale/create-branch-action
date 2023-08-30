@@ -5,13 +5,13 @@ branding:
   icon: 'database'
 author: 'PlanetScale'
 inputs:
-  org_name:
+  organization:
     description: 'Name of the organization.'
     required: true
-  database_name: 
+  database: 
     description: 'Name of the database.'
     required: true
-  branch_name:
+  branch:
     description: 'Name of the branch. If left blank, will use same name as the current git branch.'
     required: false
   from:
@@ -45,9 +45,9 @@ runs:
         version: ${{ inputs.version }}
     - name: Create branch and connection
       env:
-        ORGANIZATION: ${{ inputs.org_name }}
-        DATABASE: ${{ inputs.database_name }}
-        BRANCH: ${{ inputs.branch_name }}
+        ORGANIZATION: ${{ inputs.organization }}
+        DATABASE: ${{ inputs.database }}
+        BRANCH: ${{ inputs.branch }}
         FROM: ${{ inputs.from }}
         WAIT: ${{ inputs.wait }}
         REGION: ${{ inputs.region }}
