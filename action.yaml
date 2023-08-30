@@ -1,20 +1,21 @@
-name: 'Create Database Branch '
+name: 'PlanetScale: Create Database Branch'
 description: 'Creates a branch for a PlanetScale database.'
 branding:
   color: 'orange'
   icon: 'database'
+author: 'PlanetScale'
 inputs:
-  database_name:
-    description: 'The name of the database'
+  org_name:
+    description: 'Name of the organization.'
+    required: true
+  database_name: 
+    description: 'Name of the database.'
     required: true
   branch_name:
-    description: 'The name of the new branch'
-    required: true
-  org_name:
-    description: 'The name of the organization that owns the database'
-    required: true
+    description: 'Name of the branch. If left blank, will use same name as the current git branch.'
+    required: false
   from:
-    description: 'The production branch to create the new branch from. Defaults to the default production branch.'
+    description: 'The production branch to create the new branch from.'
     required: false
   restore:
     description: 'The ID of the backup you wish to restore into the new branch.'
@@ -31,16 +32,26 @@ inputs:
   seed_data:
     description: "Set to \"true\", to enable seed data from the latest backup using Data Branching™"
     required: false
+  version: 
+    description: 'Version of pscale to install. i.e. v0.106.0. Defaults to latest version.'
+    required: false
+    default: 'latest'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.database_name }}
-    - ${{ inputs.branch_name }}
-    - ${{ inputs.org_name }}
-    - ${{ inputs.from }}
-    - ${{ inputs.restore }}
-    - ${{ inputs.region }}
-    - ${{ inputs.wait }}
-    - ${{ inputs.check_exists }}
-    - ${{ inputs.seed_data }}
+  using: "composite"
+  steps:
+    - name: Setup pscale
+      uses: planetscale/setup-pscale-action@main
+      with:
+        version: ${{ inputs.version }}
+    - name: Create branch and connection
+      env:
+        ORGANIZATION: ${{ inputs.org_name }}
+        DATABASE: ${{ inputs.database_name }}
+        BRANCH: ${{ inputs.branch_name }}
+        FROM: ${{ inputs.from }}
+        WAIT: ${{ inputs.wait }}
+        REGION: ${{ inputs.region }}
+        RESTORE: ${{ inputs.restore }}
+      shell: bash
+      run:
+        node dist/index.js
