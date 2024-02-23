@@ -1,8 +1,15 @@
-# Create Database Branch Action
+**:warning: :warning:**
+
+**This Action has been replaced by [`setup-pscale-action`](https://github.com/planetscale/setup-pscale-action). Which is even faster! [Please see an example here](https://planetscale.com/docs/devops/github-actions#create-a-planetscale-branch).**
+
+**:warning: :warning:**
+
+
+### Create Database Branch Action
 
 This GitHub Action can be used within your workflows to create new branches of your PlanetScale database.
 
-## Prerequisites
+### Prerequisites
 
 Before you can use this Action, you'll need to configure a service token that has permission to create branches on your database. Refer to our docs on [how to create a service token](https://planetscale.com/docs/concepts/service-tokens) for more details. Once the service token has been created, the following repository secrets must also be set:
 
